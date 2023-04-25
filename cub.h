@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:11:47 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/20 21:47:17 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:06:00 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@ typedef struct s_map
 	int		py;
 	int		wide;
 	int		high;
+	char	player_dir;
 	char	floor[3];
-	char	ceilin[3];
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+	char	ceiling[3];
 }		t_map;
 
 typedef struct s_game
@@ -40,11 +45,15 @@ int		basic_error_check(int argc, char **argv);
 char	setmap(char *file, t_map *map, t_game *game);
 void	check_map_by_lines(const char *str, t_map *map);
 void	print_map(t_map *map);
-int		check_top_bot(t_map *map);
-int		call_check(char *str, t_map *map);
-int		surrounded_check(t_map *map);
+int		check_top(t_map *map);
+int		call_check(char *str, t_map *map, t_game *game);
+int		check_flood(t_map *map, int x, int y);
 int		check_symbol(t_map *map);
 // void	find_rgb(t_map *mam);
-int	floodfill_check(char **map, int j, int i);
+int		inner_space(t_map *map);
+void	error_free(t_game *game, t_map *map);
+int		side_check(t_map *map);
+void	free_double_array(char **array);
+int		prep_img(t_map *map);
 
 #endif

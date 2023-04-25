@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:22:17 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/20 22:10:37 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:42:51 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,43 +38,59 @@ int	basic_error_check(int argc, char **argv)
 	return (0);
 }
 
-int	check_top_bot(t_map *map)
+int	check_top(t_map *map)
 {
-	int i;
+	int		i;
+	char	**tempmap;
 
 	i = 0;
-	while (map->map[6][i])
-	{
-		if (map->map[6][i] != '1' && !ft_isspace(map->map[6][i]))
-			return (1);
+	tempmap = map->map;
+	tempmap[6] = map->map[6];
+	while (ft_isspace(tempmap[6][i]))
 		i++;
-	}
-	i = 0;
-	while (map->map[map->high][i])
+	if (tempmap[6][0] == '0')
+		i++;
+	while (tempmap[6][i])
 	{
-		if (map->map[map->high][i] != '1' && !ft_isspace(map->map[map->high][i]))
+		if (tempmap[6][i] != '1' && tempmap[6][i] != 'E')
+		{
+			if (tempmap[6][ft_strlen(tempmap[6]) - 1] == '0')
+				return (0);
 			return (1);
+		}
 		i++;
 	}
 	return (0);
 }
 
-// int	floodfill_check(char **map, int j, int i)
-// {
-// 	if (map[j][i] == ' ')
-// 		return (1);
-// 	// map->map[j][i] = '2';
-// 	// print_map(map);
-// 	if (map[j - 1][i] == '1')
-// 		floodfill_check(map, j + 1, i);
-// 	if (map[j + 1][i] == '1')
-// 		floodfill_check(map, j - 1, i);
-// 	if (map[j][i + 1] == '1')
-// 		floodfill_check(map, j, i - 1);
-// 	if (map[j][i - 1] == '1')
-// 		floodfill_check(map, j, i + 1);
-// 	return (0);
-// }
+int	inner_space(t_map *map)
+{
+	int	i;
+	int	j;
+
+	j = 7;
+	while (map->map[j])
+	{
+		i = 0;
+		while ((map->map[j][i]) != '\0')
+		{
+			if (map->map[j][i] == '0')
+			{
+				if (map->map[j + 1] == NULL || map->map[j - 1] == NULL)
+					return (1);
+				if (map->map[j][i + 1] == ' ' || map->map[j][i + 1] == '\0' || \
+				map->map[j][i - 1] == ' ' || map->map[j][i - 1] == '\0')
+					return (1);
+				if (map->map[j + 1][i] == ' ' || map->map[j + 1][i] == '\0' || \
+				map->map[j - 1][i] == ' ' || map->map[j - 1][i] == '\0')
+					return (1);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (0);
+}
 
 int	check_symbol(t_map *map)
 {
@@ -96,9 +112,31 @@ int	check_symbol(t_map *map)
 			{
 				map->px = i;
 				map->py = j;
+				map->player_dir = c;
 			}
 			i++;
 		}
+		j++;
+	}
+	return (0);
+}
+
+int	side_check(t_map *map)
+{
+	int	right;
+	int	left;
+	int	j;
+
+	j = 6;
+	while (map->map[j])
+	{
+		left = 0;
+		right = ft_strlen(map->map[j]) - 1;
+		while (map->map[j][left] == ' ')
+			left++;
+		if ((map->map[j][left] != '1' || map->map[j][right] != '1') && \
+		(map->map[j][left] != 'E' || map->map[j][right] != 'E'))
+			return (1);
 		j++;
 	}
 	return (0);

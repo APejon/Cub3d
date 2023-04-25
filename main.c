@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:11:44 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/20 15:57:52 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:09:18 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,16 @@ int	main(int argc, char **argv)
 	game = malloc(sizeof(t_game));
 	map = malloc(sizeof(t_map));
 	setmap(argv[1], map, game);
-	// find_rgb(map);
-	// game->mlx = mlx_init();
-	// print_map(map);
+	if (prep_img(map) == 1)
+		error_free(game, map);
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		error_free(game, map);
+	// game->mlx_window = mlx_new_window(game->mlx, 500, 500, "cub3D");
+	// if (!game->mlx_window)
+		// error_free(game, map);
+	// mlx_loop(game->mlx);
+	free(game);
+	free(map);
+	return (0);
 }

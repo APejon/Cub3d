@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 01:34:22 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/19 15:35:16 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/23 18:06:34 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen(const char *str)
 	int	c;
 
 	c = 0;
+	if (!str)
+		return (0);
 	while (str[c])
 		c++;
 	return (c);

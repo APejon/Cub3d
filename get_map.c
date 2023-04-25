@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:19:20 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/20 21:47:24 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:11:08 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	setmap(char *file, t_map *map, t_game *game)
 		ft_printf("%s", "empty file");
 		free(game);
 		free(map);
+		exit(1);
 	}
 	while (temp != NULL)
 	{
@@ -33,52 +34,54 @@ char	setmap(char *file, t_map *map, t_game *game)
 		temp = get_next_line(fd_error);
 	}
 	free(temp);
-	fd_error = call_check(str, map);
+	fd_error = call_check(str, map, game);
 	return (fd_error);
+}
+
+int	prep_img(t_map *map)
+{
+	int	j;
+
+	j = 0;
+	while (j < 6)
+	{
+		if (ft_strncmp(map->map[j], "NO", 2) == 0)
+			map->north = ft_substr(map->map[j], 3, ft_strlen(map->map[j]));
+		if (ft_strncmp(map->map[j], "SO", 2) == 0)
+			map->south = ft_substr(map->map[j], 3, ft_strlen(map->map[j]));
+		if (ft_strncmp(map->map[j], "WE", 2) == 0)
+			map->west = ft_substr(map->map[j], 3, ft_strlen(map->map[j]));
+		if (ft_strncmp(map->map[j], "EA", 2) == 0)
+			map->east = ft_substr(map->map[j], 3, ft_strlen(map->map[j]));
+		j++;
+	}
+	if (map->north == NULL || map->south == NULL || map->west == NULL
+		|| map->east == NULL)
+		return (1);
+	return (0);
 }
 
 void	check_map_by_lines(const char *str, t_map *map)
 {
 	int	height;
-	
+	int	width;
+
 	height = 0;
+	width = 0;
 	map->map = ft_split(str, '\n');
 	while (map->map[height] != NULL)
+	{
+		width = ft_strlen(map->map[height]);
+		map->wide = width;
+		if (map->wide < width)
+			map->wide = width;
 		height++;
+		width = 0;
+	}
 	map->high = height - 1;
 }
 
-// void	find_rgb(t_map *map)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	floor_num;
-// 	int	ceiling_num;
-
-// 	i = 0;
-// 	j = 0;
-// 	ceiling_num = 0;
-// 	floor_num = 0;
-// 	while (map->map[j])
-// 	{
-// 		while (map->map[j][i])
-// 		{
-// 			if (map->map[j][i] == 'F')
-// 			{
-// 				map->floor[floor_num] = *ft_substr(map->map[j], i + 2, 3);
-// 				// map->floor[floor_num + 1] = *ft_substr(map->map[j], i + 5, 3);
-// 				// map->floor[floor_num + 2] = *ft_substr(map->map[j], i + 8, 3);
-// 			}
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// 	printf("%c\n", map->floor[0]);
-// 	// printf("%c\n", map->floor[1]);
-// 	// printf("%c\n", map->floor[2]);
-// }
-
-int	call_check(char *str, t_map *map)
+int	call_check(char *str, t_map *map, t_game *game)
 {
 	int	error;
 
@@ -86,22 +89,24 @@ int	call_check(char *str, t_map *map)
 	if (str == NULL)
 		return (0);
 	check_map_by_lines(str, map);
-	// error += check_top_bot(map);
 	error += check_symbol(map);
-	error += floodfill_check(map->map, map->py, map->px);
+	error += check_top(map);
+	error += side_check(map);
 	if (error)
-		printf("Map Error");
+		error_free(game, map);
+	error += inner_space(map);
+	if (error)
+		error_free(game, map);
 	return (error);
 }
 
+// void	print_map(t_map *map)
+// {
+// 	int i = 0;
 
-void	print_map(t_map *map)
-{
-	int i = 0;
-
-	while (map->map[i] != NULL)
-	{
-		printf("%s\n", map->map[i]);
-		i++;
-	}
-}
+// 	while (map->map[i] != NULL)
+// 	{
+// 		printf("%s\n", map->map[i]);
+// 		i++;
+// 	}
+// }

@@ -6,7 +6,7 @@
 #    By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/19 15:11:41 by gchernys          #+#    #+#              #
-#    Updated: 2023/04/20 22:11:25 by gchernys         ###   ########.fr        #
+#    Updated: 2023/04/23 18:41:23 by gchernys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ mlx := ./mlx/libmlx.a
 
 FILES :=	./main.c		\
 			./error_check.c	\
-			./get_map.c
+			./get_map.c		\
+			./utils.c
 		
 OBJECTS := $(FILES:.c=.o)
 

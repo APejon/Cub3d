@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 20:58:49 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 16:12:10 by gchernys         ###   ########.fr       */
+/*   Created: 2023/04/22 14:04:00 by gchernys          #+#    #+#             */
+/*   Updated: 2023/04/25 15:48:08 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub.h"
 
-void	ft_puterr(char *str)
+void	error_free(t_game *game, t_map *map)
 {
-	ft_putstr_fd(str, 2);
+	printf("error");
+	free(game);
+	free(map);
 	exit(1);
 }

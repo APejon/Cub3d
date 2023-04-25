@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 16:31:56 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/18 05:53:18 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/23 14:18:05 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ char		*ft_strjoin_gnl(char *s1, char *s2);
 char		*fill_buf(char *buf, int loc);
 
 char		*create_result(char *buf, int loc);
+
+int			ft_lastoccur(const char *str, char c);
 
 char		*ft_read(int fd, char *buf, int *loc);
 

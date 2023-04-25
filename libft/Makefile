@@ -6,7 +6,7 @@
 #    By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 02:48:11 by gchernys          #+#    #+#              #
-#    Updated: 2023/02/01 21:29:29 by gchernys         ###   ########.fr        #
+#    Updated: 2023/04/23 14:19:42 by gchernys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ AR = ar
 ARFLAGS = crs
 
 CC = gcc
-CFLAG = -Wall -Wextra -Werror
+CFLAG = -Wall -Wextra -Werror -g -fsanitize=address
 
 RM = rm
 RMFLAG = -f
@@ -62,7 +62,8 @@ SRC_PART1 =	./ft_memset.c	\
 			./ft_strcmp.c		\
 			./ft_isspace.c		\
 			./ft_puterr.c		\
-			./ft_strldup.c
+			./ft_strldup.c		\
+			./ft_lastoccur.c
 	
 SRC_PART2 =	./ft_substr.c	\
 			./ft_strjoin.c	\
