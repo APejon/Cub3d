@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:22:17 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 15:42:51 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:36:54 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	side_check(t_map *map)
 	{
 		left = 0;
 		right = ft_strlen(map->map[j]) - 1;
-		while (map->map[j][left] == ' ')
+		while (map->map[j][left] == ' ' || map->map[j][left] == '\t')
 			left++;
 		if ((map->map[j][left] != '1' || map->map[j][right] != '1') && \
 		(map->map[j][left] != 'E' || map->map[j][right] != 'E'))

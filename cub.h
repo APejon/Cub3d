@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:11:47 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 16:06:00 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:44:36 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ int		check_flood(t_map *map, int x, int y);
 int		check_symbol(t_map *map);
 // void	find_rgb(t_map *mam);
 int		inner_space(t_map *map);
-void	error_free(t_game *game, t_map *map);
+int		error_free(t_game *game, t_map *map, char *str);
 int		side_check(t_map *map);
 void	free_double_array(char **array);
 int		prep_img(t_map *map);
+int		spclen(char *str, int i);
 
 #endif
