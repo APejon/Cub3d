@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:19:20 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 23:38:58 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:46:46 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,45 @@ int	call_check(char *str, t_map *map, t_game *game)
 	check_map_by_lines(str, map);
 	error = check_symbol(map);
 	if (error)
-		error_free(game, map, "Invalid Symbol in map\n");
+		error_free(game, map, "error: Invalid Symbol in map\n");
 	error = check_top(map);
 	if (error)
-		error_free(game, map, "Invalid top of map\n");
+		error_free(game, map, "error: Invalid top of map\n");
 	error = side_check(map);
 	if (error)
-		error_free(game, map, "Invalid side of map\n");
+		error_free(game, map, "error: Invalid side of map\n");
 	error = inner_space(map);
 	if (error)
-		error_free(game, map, "found a \"0\" touching an empty space\n");
+		error_free(game, map, "error: found a \"0\" touching an empty space\n");
+	error = player_count(map);
+	if (error)
+		error_free(game, map, "error: Invalid amount of players\n");
 	return (error);
+}
+
+int	player_count(t_map *map)
+{
+	int i;
+	int j;
+	int count;
+
+	count = 0;
+	j = 6;
+	while (map->map[j])
+	{
+		i = 0;
+		while (map->map[j][i])
+		{
+			if (map->map[j][i] == 'N' || map->map[j][i] == 'W' || \
+				map->map[j][i] == 'E' || map->map[j][i] == 'S')
+				count++;
+			i++;
+		}
+		j++;
+	}
+	if (count != 1)
+		return (1);
+	return (0);
 }
 
 void	print_map(t_map *map)

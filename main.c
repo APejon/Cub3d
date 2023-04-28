@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:11:44 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 22:45:12 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/28 23:44:41 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	map = malloc(sizeof(t_map));
 	setmap(argv[1], map, game);
 	if (prep_img(map) == 1)
-		error_free(game, map, "Error : image not created\n");
+		error_free(game, map, "Error: image not created\n");
 	// game->mlx = mlx_init();
 	// if (!game->mlx)
 	// 	error_free(game, map);
@@ -30,7 +30,6 @@ int	main(int argc, char **argv)
 	// if (!game->mlx_window)
 	// 	error_free(game, map);
 	// mlx_loop(game->mlx);
-	printf("%s\n", map->north);
 	free(game);
 	free(map);
 	return (0);

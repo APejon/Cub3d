@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:11:47 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 22:44:36 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/29 00:36:41 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@
 
 typedef struct s_map
 {
-	char	**map;
-	int		px;
-	int		py;
-	int		wide;
-	int		high;
-	char	player_dir;
-	char	floor[3];
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	char	ceiling[3];
+	char			**map;
+	unsigned int	floor_color;
+	unsigned int	ceiling_color;
+	int				floor[3];
+	int				ceiling[3];
+	int				px;
+	int				py;
+	int				wide;
+	int				high;
+	char			player_dir;
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
 }		t_map;
 
 typedef struct s_game
@@ -56,5 +58,6 @@ int		side_check(t_map *map);
 void	free_double_array(char **array);
 int		prep_img(t_map *map);
 int		spclen(char *str, int i);
+int		player_count(t_map *map);
 
 #endif

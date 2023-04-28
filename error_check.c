@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:22:17 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 22:36:54 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/28 23:56:39 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ int	check_top(t_map *map)
 		i++;
 	while (tempmap[6][i])
 	{
-		if (tempmap[6][i] != '1' && tempmap[6][i] != 'E')
+		if (tempmap[6][i] == ' ')
+			i++;
+		if (tempmap[6][i] != '1')
 		{
 			if (tempmap[6][ft_strlen(tempmap[6]) - 1] == '0')
 				return (0);
