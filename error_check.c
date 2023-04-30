@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:22:17 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/28 23:56:39 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:23:28 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int	inner_space(t_map *map)
 			{
 				if (map->map[j + 1] == NULL || map->map[j - 1] == NULL)
 					return (1);
-				if (map->map[j][i + 1] == ' ' || map->map[j][i + 1] == '\0' || \
-				map->map[j][i - 1] == ' ' || map->map[j][i - 1] == '\0')
+				if (map->map[j][i + 1] == '\0' || map->map[j][i - 1] == '\0' || \
+				map->map[j][i + 1] == ' ' || map->map[j][i - 1] == ' ')
 					return (1);
-				if (map->map[j + 1][i] == ' ' || map->map[j + 1][i] == '\0' || \
-				map->map[j - 1][i] == ' ' || map->map[j - 1][i] == '\0')
+				if (map->map[j + 1][i] == '\0' || map->map[j - 1][i] == '\0' || \
+				map->map[j - 1][i] == ' ' || map->map[j + 1][i] == ' ')
 					return (1);
 			}
 			i++;
@@ -134,10 +134,9 @@ int	side_check(t_map *map)
 	{
 		left = 0;
 		right = ft_strlen(map->map[j]) - 1;
-		while (map->map[j][left] == ' ' || map->map[j][left] == '\t')
+		while (ft_isspace(map->map[j][left]))
 			left++;
-		if ((map->map[j][left] != '1' || map->map[j][right] != '1') && \
-		(map->map[j][left] != 'E' || map->map[j][right] != 'E'))
+		if ((map->map[j][left] != '1' || map->map[j][right] != '1'))
 			return (1);
 		j++;
 	}
