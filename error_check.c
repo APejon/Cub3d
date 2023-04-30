@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:22:17 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/30 17:23:28 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:16:13 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,26 @@ int	inner_space(t_map *map)
 	int	i;
 	int	j;
 
-	j = 7;
-	while (map->map[j])
+	j = 6;
+	while (map->map[j++])
 	{
 		i = 0;
-		while ((map->map[j][i]) != '\0')
+		while ((map->map[j][i++]) != '\0')
 		{
-			if (map->map[j][i] == '0')
+			if (map->map[j][i] == '0' || map->map[j][i] == 'W' || \
+			map->map[j][i] == 'E' || map->map[j][i] == 'S' || \
+			map->map[j][i] == 'N')
 			{
 				if (map->map[j + 1] == NULL || map->map[j - 1] == NULL)
 					return (1);
 				if (map->map[j][i + 1] == '\0' || map->map[j][i - 1] == '\0' || \
-				map->map[j][i + 1] == ' ' || map->map[j][i - 1] == ' ')
+				ft_isspace(map->map[j][i + 1]) || ft_isspace(map->map[j][i - 1]))
 					return (1);
 				if (map->map[j + 1][i] == '\0' || map->map[j - 1][i] == '\0' || \
-				map->map[j - 1][i] == ' ' || map->map[j + 1][i] == ' ')
+				ft_isspace(map->map[j + 1][i]) || ft_isspace(map->map[j - 1][i]))
 					return (1);
 			}
-			i++;
 		}
-		j++;
 	}
 	return (0);
 }

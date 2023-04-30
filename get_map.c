@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:19:20 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/30 17:16:47 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:17:28 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	call_check(char *str, t_map *map, t_game *game)
 		error_free(game, map, "error: Invalid side of map\n");
 	error = inner_space(map);
 	if (error)
-		error_free(game, map, "error: found a \"0\" touching an empty space\n");
+		error_free(game, map, "error: found a symbol touching an empty space\n");
 	error = player_count(map);
 	if (error)
 		error_free(game, map, "error: Invalid amount of players\n");
