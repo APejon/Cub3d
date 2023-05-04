@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 15:11:44 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/30 18:08:15 by gchernys         ###   ########.fr       */
+/*   Created: 2023/05/03 01:12:32 by gchernys          #+#    #+#             */
+/*   Updated: 2023/05/04 09:59:25 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	t_game	*game;
 	t_map	*map;
+	t_game	*game;
 
 	basic_error_check(argc, argv);
 	game = malloc(sizeof(t_game));
 	map = malloc(sizeof(t_map));
-	setmap(argv[1], map, game);
-	if (prep_img(map) == 1)
-		error_free(game, map, "Error: image not created\n");
-	// game->mlx = mlx_init();
-	// if (!game->mlx)
-	// 	error_free(game, map);
-	// game->mlx_window = mlx_new_window(game->mlx, 1920, 1240, "cub3D");
-	// if (!game->mlx_window)
-	// 	error_free(game, map);
-	// mlx_loop(game->mlx);
-	free(game);
-	free(map);
+	if (map == NULL || game == NULL || malloc_map(map, argv[1]))
+		return_error("\nError: Malloc error\n\n", map, game);
+	load_map(game, map, argv[1]);
 	return (0);
 }

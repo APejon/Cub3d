@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   spacecount.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchernys <gchernys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 22:44:06 by gchernys          #+#    #+#             */
-/*   Updated: 2022/07/14 22:47:16 by gchernys         ###   ########.fr       */
+/*   Created: 2023/05/04 09:40:58 by gchernys          #+#    #+#             */
+/*   Updated: 2023/05/04 09:41:35 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+int	spacecount(char *str, int i)
 {
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
-		|| c == '\r' || c == ' ')
-		return (1);
-	return (0);
+	int	count;
+
+	count = 0;
+	while (ft_space(str[i]))
+	{
+		count++;
+		i++;
+	}
+	return (count);
 }

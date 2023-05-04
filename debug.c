@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 23:39:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/03 01:35:42 by gchernys         ###   ########.fr       */
+/*   Created: 2023/05/04 10:02:47 by gchernys          #+#    #+#             */
+/*   Updated: 2023/05/04 10:02:58 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	print_map(char **map)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
+	j = 0;
+	while (map[j])
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		printf("%s\n", map[j]);
+		j++;
 	}
 }

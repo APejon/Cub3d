@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_firstoccur.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 14:04:00 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/25 22:44:14 by gchernys         ###   ########.fr       */
+/*   Created: 2023/05/04 09:15:34 by gchernys          #+#    #+#             */
+/*   Updated: 2023/05/04 09:15:58 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "libft.h"
 
-int	error_free(t_game *game, t_map *map, char *str)
+int	ft_firstoccur(const char *str, char c)
 {
-	printf("%s", str);
-	free(game);
-	free(map);
-	exit(1);
-}
+	int	i;
 
-int	spclen(char *str, int i)
-{
-	if (!str)
-		return (0);
-	while (str[i] == ' ' || str[i] == '\t')
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (i);
 		i++;
-	return (i);
+	}
+	return (0);
 }

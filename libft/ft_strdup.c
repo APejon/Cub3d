@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchernys <gchernys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 04:02:18 by gchernys          #+#    #+#             */
-/*   Updated: 2021/12/19 14:55:26 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:49:47 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *str)
 	if (dest == NULL)
 		return (NULL);
 	i = 0;
-	while (str[i])
+	while (str[i + 1] != '\0')
 	{
 		dest[i] = str[i];
 		i++;

@@ -6,7 +6,7 @@
 #    By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 02:48:11 by gchernys          #+#    #+#              #
-#    Updated: 2023/04/23 14:19:42 by gchernys         ###   ########.fr        #
+#    Updated: 2023/05/04 10:06:58 by gchernys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,10 +60,13 @@ SRC_PART1 =	./ft_memset.c	\
 			./ft_putcharc.c		\
 			./ft_putstrs.c		\
 			./ft_strcmp.c		\
-			./ft_isspace.c		\
+			./ft_space.c		\
 			./ft_puterr.c		\
 			./ft_strldup.c		\
-			./ft_lastoccur.c
+			./ft_lastoccur.c	\
+			./remove_char.c		\
+			./ft_firstoccur.c	\
+			./ft_countspace.c
 	
 SRC_PART2 =	./ft_substr.c	\
 			./ft_strjoin.c	\

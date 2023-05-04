@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   cub_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 23:39:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/03 01:35:42 by gchernys         ###   ########.fr       */
+/*   Created: 2023/05/03 01:29:17 by gchernys          #+#    #+#             */
+/*   Updated: 2023/05/04 10:06:25 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	free_double_array(char **arr)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
+	while (arr[i] != NULL)
 	{
-		ft_putchar_fd(s[i], fd);
+		free(arr[i]);
 		i++;
 	}
+	free(arr);
+}
+
+int	return_error(char *str, t_map *map, t_game *game)
+{
+	free_double_array(map->map);
+	free(map->player);
+	free(map);
+	free(game);
+	ft_putstr_fd(str, 2);
+	exit(1);
 }

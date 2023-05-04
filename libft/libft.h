@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 16:31:56 by gchernys          #+#    #+#             */
-/*   Updated: 2023/04/23 14:18:05 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/04 09:57:18 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,12 @@ int			ft_printint(va_list args);
 int			ft_unsignednbr(unsigned int i);
 int			ft_putnbrprintf(int i);
 
-int			ft_isspace(int c);
+int			ft_space(int c);
+
+void		remove_char(char **arr, int size, char c);
+
+int			ft_firstoccur(const char *str, char c);
+
+int			spacecount(char *str, int i);
 
 #endif

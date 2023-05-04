@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   remove_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 23:39:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/03 01:35:42 by gchernys         ###   ########.fr       */
+/*   Created: 2023/05/02 23:18:41 by gchernys          #+#    #+#             */
+/*   Updated: 2023/05/04 10:06:18 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	remove_char(char **arr, int size, char c)
 {
-	int	i;
+	char	*ptr;
+	int		i;
 
+	ptr = NULL;
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
+	while (i < size)
 	{
-		ft_putchar_fd(s[i], fd);
+		ptr = ft_strchr(arr[i], c);
+		if (ptr != NULL)
+		{
+			*ptr = '\0';
+			ft_strncpy(arr[i], arr[i] + 1, ft_strlen(arr[i]));
+		}
 		i++;
 	}
 }
