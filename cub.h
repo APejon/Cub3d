@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:12:37 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 07:51:04 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 12:56:30 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,13 @@ int				validate_space(char **tempmap);
 int				validate_sides(char **tempmap);
 int				validate_player_count(char **tempmap);
 int				set_textures(t_map *map);
+void			setmap(char **tempmap, t_map *map);
 int				check_textures(t_map *map);
 int				find_rgb(t_map *map);
 int				init_rgb(t_map *map);
+int				set_dimensions(t_map *map, char *file);
+unsigned long	setrgb(int red, int green, int blue);
+int				check_rgb(char **str);
 /***************************FREEING***************************/
 void			free_double_array(char **arr);
 int				return_error(char *str, t_map *map, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:29:17 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 06:36:17 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:01:49 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ int	return_error(char *str, t_map *map, t_game *game)
 {
 	if (map->map)
 		free_double_array(map->map);
+	if (map->north)
+		free(map->north);
+	if (map->south)
+		free(map->south);
+	if (map->west)
+		free(map->west);
+	if (map->east)
+		free(map->east);
+	if (map->floor)
+		free(map->floor);
+	if (map->cil)
+		free(map->cil);
 	free(map->player);
 	free(map);
 	free(game);

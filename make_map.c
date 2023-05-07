@@ -6,13 +6,13 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:16:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 07:39:13 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:06:46 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	set_dimensions(t_map *map, char *file)
+int	set_dimensions(t_map *map, char *file)
 {
 	int		height;
 	char	*temp;
@@ -41,7 +41,7 @@ static int	set_dimensions(t_map *map, char *file)
 	return (0);
 }
 
-static void	setmap(char **tempmap, t_map *map)
+void	setmap(char **tempmap, t_map *map)
 {
 	int	j;
 	int	i;
@@ -76,7 +76,8 @@ int	malloc_map(t_map *map, char *file)
 		return (MALLOC_ERR);
 	while (i < map->high)
 	{
-		map->map[i] = malloc(sizeof(char) * (map->wide + 1));
+		map->map[i] = malloc(sizeof(char) * (map->wide + 2));
+		ft_bzero(map->map[i], map->wide + 2);
 		if (map->map[i] == NULL)
 			return (MALLOC_ERR);
 		i++;

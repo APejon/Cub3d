@@ -6,18 +6,18 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 07:35:06 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 07:50:40 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 12:56:23 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static unsigned long	setrgb(int red, int green, int blue)
+unsigned long	setrgb(int red, int green, int blue)
 {
 	return (((red & 0xff) << 16) + ((green & 0xff) << 8) + (blue & 0xff));
 }
 
-static int	check_rgb(char **str)
+int	check_rgb(char **str)
 {
 	int	i;
 	int	j;
