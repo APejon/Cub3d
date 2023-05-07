@@ -6,40 +6,11 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:03:26 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/04 10:03:44 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 07:36:41 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-int	set_textures(t_map *map)
-{
-	int	j;
-	int	i;
-	int	k;
-
-	j = 0;
-	while (j++ < 6)
-	{
-		i = 0;
-		while (ft_space(map->map[j][i]))
-			i++;
-		k = i + 2;
-		if (ft_strncmp(map->map[j] + i, "NO", 2) == 0)
-			map->north = ft_substr(map->map[j], k + spacecount(map->map[j], k), \
-			ft_strlen(map->map[j]) - k - spacecount(map->map[j], k));
-		else if (ft_strncmp(map->map[j] + i, "SO", 2) == 0)
-			map->south = ft_substr(map->map[j], k + spacecount(map->map[j], k), \
-			ft_strlen(map->map[j]) - k - spacecount(map->map[j], k));
-		else if (ft_strncmp(map->map[j] + i, "WE", 2) == 0)
-			map->west = ft_substr(map->map[j], k + spacecount(map->map[j], k), \
-			ft_strlen(map->map[j]) - k - spacecount(map->map[j], k));
-		else if (ft_strncmp(map->map[j] + i, "EA", 2) == 0)
-			map->east = ft_substr(map->map[j], k + spacecount(map->map[j], k), \
-			ft_strlen(map->map[j]) - k - spacecount(map->map[j], k));
-	}
-	return (0);
-}
 
 int	validate_player_count(char **tempmap)
 {
@@ -94,12 +65,12 @@ int	validate_space(char **tempmap)
 		i = 0;
 		while (tempmap[j][i] != '\0')
 		{
-			if (tempmap[j][i] == '0')
+			if (ft_strchr("NSEW0", tempmap[j][i]))
 			{
 				if (!ft_strchr("NWSE01", tempmap[j][i + 1]) || \
-				!ft_strchr("NWSE01", tempmap[j][i - 1]) || \
-				!ft_strchr("NWSE01", tempmap[j - 1][i]) || \
-				!ft_strchr("NWSE01", tempmap[j + 1][i]))
+					!ft_strchr("NWSE01", tempmap[j][i - 1]) || \
+					!ft_strchr("NWSE01", tempmap[j - 1][i]) || \
+					!ft_strchr("NWSE01", tempmap[j + 1][i]))
 					return (PARSE_ERR);
 			}
 			i++;

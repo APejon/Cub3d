@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:12:34 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/04 10:01:40 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 07:40:42 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	basic_error_check(int argc, char **argv)
 	if (argc != 2)
 	{
 		write(2, "Error: Invalid number of arguments", 34);
-		exit(1);
+		return (PARSE_ERR);
 	}
 	str = argv[1];
 	i = ft_strlen(argv[1]);
@@ -28,12 +28,25 @@ int	basic_error_check(int argc, char **argv)
 	str[i - 3] != 'c' || str[i - 4] != '.')
 	{
 		write(2, "Error: File needs to end with \".cub\" extension", 46);
-		exit(1);
+		return (PARSE_ERR);
 	}
-	if (open(argv[1], O_RDONLY) < 0)
+	i = open(argv[1], O_RDONLY);
+	if (i < 0)
 	{
 		write(2, "Couldn't open file", 18);
-		exit(1);
+		close (i);
+		return (PARSE_ERR);
 	}
+	close (i);
+	return (0);
+}
+
+int	check_textures(t_map *map)
+{
+	set_textures(map);
+	if (map->north == NULL || map->south == NULL || map->west == NULL || \
+	map->east == NULL || map->north[0] == '\0' || map->south[0] == '\0' || \
+	map->west[0] == '\0' || map->east[0] == '\0')
+		return (PARSE_ERR);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:29:17 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/04 10:06:25 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 06:36:17 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	free_double_array(char **arr)
 
 int	return_error(char *str, t_map *map, t_game *game)
 {
-	free_double_array(map->map);
+	if (map->map)
+		free_double_array(map->map);
 	free(map->player);
 	free(map);
 	free(game);

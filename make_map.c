@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:16:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/04 10:04:30 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 07:39:13 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	set_dimensions(t_map *map, char *file)
 	if (!temp)
 		return (MALLOC_ERR);
 	height = 0;
-	map->wide = 0;
 	i = 0;
 	while (temp != NULL)
 	{
@@ -33,6 +32,7 @@ static int	set_dimensions(t_map *map, char *file)
 			map->wide = i;
 		if (ft_strcmp(temp, "\n") != 0)
 			height++;
+		free(temp);
 		temp = get_next_line(fd);
 	}
 	free(temp);
@@ -104,24 +104,27 @@ int	load_map(t_game *game, t_map *map, char *file)
 	free(temp);
 	close(fd);
 	map_temp = ft_split(str, '\n');
+	free(str);
 	setmap(map_temp, map);
 	free_double_array(map_temp);
-	free(str);
 	validate_map(map, game);
 	return (0);
 }
 
 int	validate_map(t_map *map, t_game *game)
 {
-	if (validate_vertices(map->map, map))
-		return_error("\nError: Invalid vertices in map\n\n", map, game);
-	if (validate_sides(map->map))
-		return_error("\nError: Invalid sides in map\n\n", map, game);
-	if (validate_space(map->map))
-		return_error("\nError: Invalid space in map\n\n", map, game);
-	if (validate_player_count(map->map))
-		return_error("\nError: Invalid amount of players in map\n\n", map, game);
-	if (set_textures(map))
+	if (check_textures(map) == PARSE_ERR)
 		return_error("\nError: Invalid textures\n\n", map, game);
+	else if (find_rgb(map) == PARSE_ERR)
+		return_error("\nError: Invalid RGB\n\n", map, game);
+	else if (validate_vertices(map->map, map) == PARSE_ERR)
+		return_error("\nError: Invalid vertices in map\n\n", map, game);
+	else if (validate_sides(map->map) == PARSE_ERR)
+		return_error("\nError: Invalid sides in map\n\n", map, game);
+	else if (validate_space(map->map) == PARSE_ERR)
+		return_error("\nError: 0 or Player touching a space\n\n", map, game);
+	else if (validate_player_count(map->map) == PARSE_ERR)
+		return_error("\nError: Invalid amount of players in map\n\n", map, game);
+	printf("%s\n", map->north);
 	return (0);
 }
