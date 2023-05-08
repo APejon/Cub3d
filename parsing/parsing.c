@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:12:34 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/08 14:36:49 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:43:05 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	basic_error_check(int argc, char **argv)
 	if (i < 0)
 	{
 		write(2, "Couldn't open file", 18);
-		close (i);
 		return (PARSE_ERR);
 	}
 	close (i);
