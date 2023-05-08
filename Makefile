@@ -6,13 +6,13 @@
 #    By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 01:12:29 by gchernys          #+#    #+#              #
-#    Updated: 2023/05/08 14:37:38 by gchernys         ###   ########.fr        #
+#    Updated: 2023/05/08 15:18:56 by gchernys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
 
-CFLAGS := -Wall -Werror -Wextra -g #-fsanitize=address
+CFLAGS := -Wall -Werror -Wextra -g -fsanitize=address
 
 CC := gcc
 

@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:16:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/08 14:36:54 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:24:50 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,14 @@ int	load_map(t_game *game, t_map *map, char *file)
 
 int	validate_map(t_map *map, t_game *game)
 {
-	if (check_textures(map) == PARSE_ERR)
-		return_error("\nError: Invalid textures\n\n", map, game);
+	if (map->high < 6)
+		return_error("\nError: map's too short\n\n", map, game);
 	else if (find_rgb(map) == PARSE_ERR)
 		return_error("\nError: Invalid RGB\n\n", map, game);
 	else if (validate_vertices(map->map, map) == PARSE_ERR)
 		return_error("\nError: Invalid vertices in map\n\n", map, game);
+	else if (check_textures(map) == PARSE_ERR)
+		return_error("\nError: Invalid textures\n\n", map, game);
 	else if (validate_sides(map->map) == PARSE_ERR)
 		return_error("\nError: Invalid sides in map\n\n", map, game);
 	else if (validate_space(map->map) == PARSE_ERR)
