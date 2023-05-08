@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:12:37 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 12:56:30 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/07 14:36:44 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ typedef struct s_map
 	char			**map;
 	unsigned int	floor_color;
 	unsigned int	ceiling_color;
-	int				frgb[3];
-	int				crgb[3];
 	char			*floor;
 	char			*cil;
 	int				wide;

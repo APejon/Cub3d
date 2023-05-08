@@ -6,11 +6,11 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:12:34 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 07:40:42 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:36:49 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 int	basic_error_check(int argc, char **argv)
 {

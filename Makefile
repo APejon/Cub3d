@@ -6,7 +6,7 @@
 #    By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 01:12:29 by gchernys          #+#    #+#              #
-#    Updated: 2023/05/07 12:47:42 by gchernys         ###   ########.fr        #
+#    Updated: 2023/05/08 14:37:38 by gchernys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,13 @@ FLAGS := -rcs
 
 mlx := ./mlx/libmlx.a
 
-FILES :=	./main.c				\
-			./parsing.c				\
-			./make_map.c			\
-			./cub_utils.c			\
-			./debug.c				\
-			./map_validation.c		\
-			./textures_and_colors.c
+FILES :=	./main.c							\
+			./parsing/parsing.c					\
+			./parsing/make_map.c				\
+			./cub_utils.c						\
+			./debug.c							\
+			./parsing/map_validation.c			\
+			./parsing/textures_and_colors.c
 		
 OBJECTS := $(FILES:.c=.o)
 

@@ -6,11 +6,11 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 07:35:06 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 12:56:23 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:36:46 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 unsigned long	setrgb(int red, int green, int blue)
 {

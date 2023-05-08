@@ -6,11 +6,11 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:03:26 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 07:36:41 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:36:51 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 int	validate_player_count(char **tempmap)
 {
