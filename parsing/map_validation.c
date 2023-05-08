@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:03:26 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/08 14:36:51 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:25:05 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	validate_player_count(char **tempmap)
 			if (ft_strchr("NSWE", tempmap[j][i]))
 				count++;
 			i++;
+			if (!ft_strchr("10NSEW", tempmap[j][i]))
+				return (PARSE_ERR);
 		}
 		j++;
 	}

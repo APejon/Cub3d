@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:16:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/08 17:24:50 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:26:23 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	setmap(char **tempmap, t_map *map)
 		ft_strlcpy(map->map[j], tempmap[j], map->wide + 1);
 		while (i < map->wide && j > 5)
 		{
-			if (!ft_strchr("NSEW10", map->map[j][i]) || map->map[j][i] == '\0')
+			if (ft_strchr(" \t", map->map[j][i]))
 				map->map[j][i] = 'x';
 			i++;
 			if (i == map->wide)
@@ -127,7 +127,7 @@ int	validate_map(t_map *map, t_game *game)
 	else if (validate_space(map->map) == PARSE_ERR)
 		return_error("\nError: 0 or Player touching a space\n\n", map, game);
 	else if (validate_player_count(map->map) == PARSE_ERR)
-		return_error("\nError: Invalid amount of players in map\n\n", map, game);
+		return_error("\nError: Invalid Players and/or symbols\n\n", map, game);
 	printf("%s\n", map->north);
 	return (0);
 }
