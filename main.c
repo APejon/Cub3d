@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:12:32 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/07 12:49:38 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:48:53 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	map = malloc(sizeof(t_map));
 	ft_bzero(map, sizeof(t_map));
 	if (map == NULL || game == NULL || malloc_map(map, argv[1]))
-		return_error("\nError: Malloc error\n\n", map, game);
+		return_error("Error\n Malloc error\n\n", map, game);
 	load_map(game, map, argv[1]);
 	return (0);
 }

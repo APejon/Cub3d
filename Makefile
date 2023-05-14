@@ -5,49 +5,51 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/03 01:12:29 by gchernys          #+#    #+#              #
-#    Updated: 2023/05/08 15:18:56 by gchernys         ###   ########.fr        #
+#    Created: 2023/05/10 15:18:05 by gchernys          #+#    #+#              #
+#    Updated: 2023/05/10 15:36:41 by gchernys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := cub3D
+NAME = cub3D
 
-CFLAGS := -Wall -Werror -Wextra -g -fsanitize=address
+SRC =	./debug.c						\
+		./main.c						\
+		./cub_utils.c					\
+		./parsing/parsing.c				\
+		./parsing/make_map.c			\
+		./parsing/map_validation.c		\
+		./parsing/textures_and_colors.c
 
-CC := gcc
 
-FLAGS := -rcs
+OBJS = $(SRC:.c=.o)
 
-mlx := ./mlx/libmlx.a
+CC = gcc
 
-FILES :=	./main.c							\
-			./parsing/parsing.c					\
-			./parsing/make_map.c				\
-			./cub_utils.c						\
-			./debug.c							\
-			./parsing/map_validation.c			\
-			./parsing/textures_and_colors.c
-		
-OBJECTS := $(FILES:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
 
-LIBFT := cd libft && make
+LIBFT = libft/libft.a
 
-LIB := libft/libft.a
+MLX_FLAGS = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
 
-$(NAME)	: $(OBJECTS)
-		$(LIBFT)
-		$(CC) $(CFLAGS) -o cub3D $(FILES) $(LIB)
+MLX_PATH = mlx
 
-all : $(NAME)
+all: ${NAME}
 
-clean :
-		rm -f $(OBJECTS)
-		cd libft && make clean
+${NAME}: ${OBJS}
+	${MAKE} -C libft
+	${MAKE} -C mlx
+	${CC} ${CFLAGS} ${OBJS} $(LIBFT) ${MLX_FLAGS} -o $@
 
-fclean : clean
-		rm -f $(NAME)
-		cd libft && make fclean
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o $@
 
-re : fclean all
+clean:
+	rm -rf *.o
+	${MAKE} clean -C libft
+	${MAKE} clean -C mlx
 
-.PHONY : all clean fclean re
+fclean: clean
+	rm -rf ${NAME}
+	${MAKE} fclean -C libft
+
+re: fclean all

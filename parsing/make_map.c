@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:16:27 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/08 18:26:23 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:38:47 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,19 @@ int	load_map(t_game *game, t_map *map, char *file)
 int	validate_map(t_map *map, t_game *game)
 {
 	if (map->high < 6)
-		return_error("\nError: map's too short\n\n", map, game);
+		return_error("Error\n map's too short\n\n", map, game);
 	else if (find_rgb(map) == PARSE_ERR)
-		return_error("\nError: Invalid RGB\n\n", map, game);
+		return_error("Error\n Invalid RGB\n\n", map, game);
 	else if (validate_vertices(map->map, map) == PARSE_ERR)
-		return_error("\nError: Invalid vertices in map\n\n", map, game);
+		return_error("Error\n Invalid vertices in map\n\n", map, game);
 	else if (check_textures(map) == PARSE_ERR)
-		return_error("\nError: Invalid textures\n\n", map, game);
+		return_error("Error\n Invalid textures\n\n", map, game);
 	else if (validate_sides(map->map) == PARSE_ERR)
-		return_error("\nError: Invalid sides in map\n\n", map, game);
+		return_error("Error\n Invalid sides in map\n\n", map, game);
 	else if (validate_space(map->map) == PARSE_ERR)
-		return_error("\nError: 0 or Player touching a space\n\n", map, game);
+		return_error("Error\n 0 or Player touching a space\n\n", map, game);
 	else if (validate_player_count(map->map) == PARSE_ERR)
-		return_error("\nError: Invalid Players and/or symbols\n\n", map, game);
+		return_error("Error\n Invalid Players and/or symbols\n\n", map, game);
 	printf("%s\n", map->north);
 	return (0);
 }

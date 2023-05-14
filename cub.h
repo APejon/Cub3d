@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:12:37 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/08 18:25:19 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:36:23 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB_H
 
 # include "libft/libft.h"
+# include "mlx/mlx.h"
 
 typedef enum e_error
 {

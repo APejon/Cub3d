@@ -6,7 +6,7 @@
 /*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:03:26 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/08 18:25:05 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:54:21 by gchernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	validate_player_count(char **tempmap)
 			if (ft_strchr("NSWE", tempmap[j][i]))
 				count++;
 			i++;
-			if (!ft_strchr("10NSEW", tempmap[j][i]))
+			if (!ft_strchr("10NSEW \tx", tempmap[j][i]))
 				return (PARSE_ERR);
 		}
 		j++;
@@ -49,7 +49,8 @@ int	validate_sides(char **tempmap)
 	{
 		left = ft_firstoccur(tempmap[j], '1');
 		right = ft_lastoccur(tempmap[j], '1');
-		if (tempmap[j][left] != '1' || tempmap[j][right] != '1')
+		if ((tempmap[j][left] != '1' || tempmap[j][right] != '1') && \
+		(tempmap[j][left] != 'x' || tempmap[j][right] != 'x'))
 			return (PARSE_ERR);
 		j++;
 	}
