@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchernys <gchernys@42abudhabi.ae>          +#+  +:+       +#+        */
+/*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:03:26 by gchernys          #+#    #+#             */
-/*   Updated: 2023/05/10 15:54:21 by gchernys         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:56:58 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub.h"
+#include "../includes/cub3d.h"
 
 int	validate_player_count(char **tempmap)
 {
@@ -88,7 +88,6 @@ int	validate_vertices(char **tempmap, t_map *map)
 	int	i;
 
 	i = 0;
-	print_map(tempmap);
 	while (tempmap[6][i] != '\0')
 	{
 		if (tempmap[6][i] != '1' && tempmap[6][i] != 'x')
